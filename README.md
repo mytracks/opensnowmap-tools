@@ -32,3 +32,13 @@ The input to this script are the extracted `*.shp.gz` files. Each file is unzipp
 
 After running this script you have many individual `mbtiles` files which have to be merged to a single `mbtiles` file using `tile-join`.
 
+# Hillshades
+
+The hillshades are provided as `geotiff` files (`out*.tif`) and they must be converted to individual `mbtiles` files first and finally merged to a single `mbtiles` file:
+
+```sh
+for filename in ./out*.tif; do
+    gdal_translate -of mbtiles "$filename" "./$(basename "$filename" .tif).mbtiles"
+done
+tile-join -o dem.mbtiles out*.mbtiles
+```
