@@ -26,6 +26,12 @@ docker run --rm -ti -v /data:/data opensnowmap-utils
 
 # Contours
 
+First you have to extract the file `contours2.tar`:
+
+```sh
+tar xvf contours2.tar
+```
+
 The contours MBTiles file is generated using the script `generate_mbtiles.sh`.
 
 The input to this script are the extracted `*.shp.gz` files. Each file is unzipped and converted to `geojson`. Afterwards `mbtiles` files are generated for various zoom levels. Finally the `mbtiles` file are merged to a single file (per shape file).
@@ -33,6 +39,12 @@ The input to this script are the extracted `*.shp.gz` files. Each file is unzipp
 After running this script you have many individual `mbtiles` files which have to be merged to a single `mbtiles` file using `tile-join`.
 
 # Hillshades
+
+First you have to extract the file `dem_tar.tar`:
+
+```sh
+tar xvf dem_tar.tar
+```
 
 The hillshades are provided as `geotiff` files (`out*.tif`) and they must be converted to individual `mbtiles` files first and finally merged to a single `mbtiles` file:
 
